@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body, html {
+            overscroll-behavior: auto;
+            background-color: #0d2835;
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(#e1eec1, #0d2835);
+            min-height: 100vh;
+        }
+
+        /* コンテナ*/
+        .grid-container {
+            display: grid; 
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+            grid-auto-rows: 300px;
+        }
+        .grid-item {
+            border: 1px solid #ccc;
+            padding-left: 15px;
+            padding-top: 15px;
+            padding-right: 15px;
+            text-align: center;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        .grid-item img {
+            max-width: 100%;
+            height: 75%;
+        }
+
+        .kirikae {
+            cursor: url('flower-image/watering-can.png'), auto;
+        }
+    
+        /*hanahana専用*/
+        #grid-container-hanahana {
+            display: grid; 
+            grid-template-columns: 1fr 1fr 1fr;
+            padding: 20px;
+            grid-auto-rows: 300px;
+            justify-items: center;
+        }
+        #grid-item-hanahana {
+            border: 1px solid #ccc;
+            padding-left: 15px;
+            padding-top: 15px;
+            padding-right: 15px;
+            text-align: center;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        #grid-item-hanahana img {
+            max-width: 100%;
+            height: 75%;
+        }
+
+        /*メディアクエリ*/
+        @media (max-width: 600px) {
+            .grid-container {
+                grid-template-columns: 1fr 1fr;
+                grid-auto-rows: 200px;
+            }
+
+            #grid-container-hanahana {
+                grid-auto-rows: 200px;
+            }
+            #grid-item-hanahana {
+                width: 200px;
+                border-radius: 5px;
+            }
+        }
+
+    </style>
+
+    <script>
+        "use strict";
+        function init() {
+            const flowers = [
+                { id: "bara", image: "flower-image/rose.jpg", text: "薔薇" },
+                { id: "azisai", image: "flower-image/hydrangea.jpg", text: "紫陽花" },
+                { id: "himawari", image: "flower-image/sunflower.jpg", text: "向日葵" },
+                { id: "tyurip", image: "flower-image/tulips.jpg", text: "チューリップ" },
+                { id: "suisen", image: "flower-image/narcissus.jpg", text: "水仙" },
+                { id: "hasu", image: "flower-image/lotus.jpg", text: "蓮" },
+                { id: "hanahana", image: "flower-image/hanahana.png", text: "？？？"}
+            ];
+
+            flowers.forEach(flower => {
+                const ele = document.getElementById(flower.id);
+                ele.addEventListener("click", function() {
+                    this.src = flower.image;
+                    document.getElementById(`${flower.id}-text`).textContent = flower.text;
+                });
+            });
+        }
+
+    </script>
+  </head>
+
+    <body onload="init()">
+        <p class="center">双葉をクリックで水を上げる</p>
+        <div class="grid-container">
+
+            <div class="grid-item kirikae">
+                <img id="bara" src="flower-image/cotyledon.jpg" alt="薔薇です">
+                <p id="bara-text">？？？</p>
+            </div>
+
+            <div class="grid-item kirikae">
+                <img id="azisai" src="flower-image/cotyledon.jpg" alt="紫陽花">
+                <p id="azisai-text">？？？</p>
+            </div>
+
+            <div class="grid-item kirikae">
+                <img id="himawari" src="flower-image/cotyledon.jpg" alt="向日葵">
+                <p id="himawari-text">？？？</p>
+            </div>
+
+            <div class="grid-item kirikae">
+                <img id="tyurip" src="flower-image/cotyledon.jpg" alt="チューリップ">
+                <p id="tyurip-text">？？？</p>
+            </div>
+
+            <div class="grid-item kirikae">
+                <img id="suisen" src="flower-image/cotyledon.jpg" alt="水仙">
+                <p id="suisen-text">？？？</p>
+            </div>
+
+            <div class="grid-item kirikae">
+                <img id="hasu" src="flower-image/cotyledon.jpg" alt="蓮">
+                <p id="hasu-text">？？？</p>
+            </div>
+        </div>
+
+        <div style="height: 4000px;"></div>
+
+        <div id="grid-container-hanahana">
+            <div></div>
+            <div id="grid-item-hanahana" class="kirikae">
+                <img id="hanahana" src="flower-image/cotyledon.jpg" alt="花花">
+                <p id="hanahana-text">？？？</p>
+            </div>
+            <div></div>
+        </div>
+    </body>
+</html>
